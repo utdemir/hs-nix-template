@@ -8,7 +8,7 @@ A [cookiecutter] template which creates a Haskell project that can be built with
 Just run:
 
 ```
-nix-shell -p cookiecutter git --run 'cookiecutter gh:utdemir/example-hs-nix'
+nix-shell -p cookiecutter git --run 'cookiecutter gh:utdemir/hs-nix-template'
 ```
 
 [cookiecutter]: https://cookiecutter.readthedocs.io/en/latest/readme.html
