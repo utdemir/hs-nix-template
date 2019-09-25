@@ -1,0 +1,8 @@
+{
+  "project_name": "your-project-name",
+  "project_synopsis": "Project synopsis.",
+  "category": "Package.Category",
+  "module": "{{cookiecutter.project_name|title|replace('-', '')}}",
+  "author_name": "Your Name",
+  "gh_user": "your_github_username"
+}
