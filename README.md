@@ -1,11 +1,15 @@
 # hs-nix-template
 
-A [cookiecutter] template which creates a Haskell project that can be built with
-`nix` and developed by `ghcid` and `cabal-install`.
+A [cookiecutter] template which creates a Haskell project that
+
+* Can be built with Nix and cabal-install,
+* Has a library, an executable and a test suite,
+* Comes with a `shell.nix` which provides an environment with `ghcid`,
+* Uses a pinned `nixpkgs`.
 
 ## Usage
 
-Just run:
+No need to install anything, just run:
 
 ```
 nix-shell -p cookiecutter git --run 'cookiecutter gh:utdemir/hs-nix-template'
