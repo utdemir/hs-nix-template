@@ -28,6 +28,7 @@ in rec
       ghcid
       stylish-haskell
       hlint
+      pkgs.niv
     ];
     withHoogle = true;
   };
