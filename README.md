@@ -1,5 +1,7 @@
 # hs-nix-template
 
+[![CI Status](https://github.com/utdemir/hs-nix-template/workflows/ci/badge.svg)](https://github.com/utdemir/hs-nix-template/actions)
+
 A [cookiecutter] template which creates a Haskell project that
 
 * Can be built with Nix and cabal-install,
