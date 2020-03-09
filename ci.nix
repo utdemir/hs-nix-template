@@ -13,5 +13,4 @@ generated = pkgs.runCommand "hs-nix-template" {
 
 build = pkgs.recurseIntoAttrs
   (import "${generated}/your-project-name" {});
-
 }
