@@ -18,10 +18,10 @@ haskellPackages = pkgs.haskell.packages.${compiler}.override {
 
 in rec
 {
-  "{{cookiecutter.project_name}}" = haskellPackages.{{cookiecutter.project_name}};
+  "{{cookiecutter.project_name}}" = haskellPackages."{{cookiecutter.project_name}}";
   shell = haskellPackages.shellFor {
-    packages = p: with p; [
-      {{cookiecutter.project_name}}
+    packages = p: [
+      p."{{cookiecutter.project_name}}"
     ];
     buildInputs = with haskellPackages; [
       cabal-install
