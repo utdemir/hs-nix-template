@@ -29,6 +29,7 @@ in rec
       ormolu
       hlint
       pkgs.niv
+      pkgs.nixpkgs-fmt
     ];
     withHoogle = true;
   };
