@@ -1,22 +1,23 @@
 { compiler ? "ghc865" }:
 
 let
-sources = import ./nix/sources.nix;
-pkgs = import sources.nixpkgs {};
+  sources = import ./nix/sources.nix;
+  pkgs = import sources.nixpkgs {};
 
-gitignore = pkgs.nix-gitignore.gitignoreSourcePure [ ./.gitignore ];
+  gitignore = pkgs.nix-gitignore.gitignoreSourcePure [ ./.gitignore ];
 
-haskellPackages = pkgs.haskell.packages.${compiler}.override {
-  overrides = se: su: {
-    "{{cookiecutter.project_name}}" =
-      se.callCabal2nix
-        "{{cookiecutter.project_name}}"
-        (gitignore ./.)
-        {};
+  haskellPackages = pkgs.haskell.packages.${compiler}.override {
+    overrides = se: su: {
+      "{{cookiecutter.project_name}}" =
+        se.callCabal2nix
+          "{{cookiecutter.project_name}}"
+          (gitignore ./.)
+          {};
+    };
   };
-};
 
-in rec
+in
+rec
 {
   "{{cookiecutter.project_name}}" = haskellPackages."{{cookiecutter.project_name}}";
   shell = haskellPackages.shellFor {
@@ -34,4 +35,3 @@ in rec
     withHoogle = true;
   };
 }
-
