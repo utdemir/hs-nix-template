@@ -26,7 +26,7 @@ in rec
     buildInputs = with haskellPackages; [
       cabal-install
       ghcid
-      stylish-haskell
+      ormolu
       hlint
       pkgs.niv
     ];
