@@ -18,4 +18,4 @@ No need to install anything, just run:
 nix-shell -p cookiecutter git --run 'cookiecutter gh:utdemir/hs-nix-template'
 ```
 
-[cookiecutter]: https://cookiecutter.readthedocs.io/en/latest/readme.html
+[cookiecutter]: https://cookiecutter.readthedocs.io/en/latest/README.html
