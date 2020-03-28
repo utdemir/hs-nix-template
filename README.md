@@ -95,7 +95,7 @@ For some packages, like `extra` we don't need its documentation or setup for pro
   extra = fastHaskellPackages.callCabal2nix "extra" (sources.extra) {};
 ```
 
-### Add external dependency to project
+### Add external dependency to `default.nix`
 
 Lets say you wanted to make `extra` a dependency of your project:
 
@@ -119,7 +119,7 @@ Lets say you wanted to make `extra` a dependency of your project:
 
 This will not only add `extra` to your project, but also build the documentation for you and add it to your local hoogle database. 
 
-### Override dependency in project
+### Override dependency in `default.nix`
 
 If you want to override a dependency you add it like we did above with `extra`, but make sure the name is the same as what it is in the package set. A quick way to see what is in your modified Haskell package set is to export it and open it up with `nix repl`.
 
