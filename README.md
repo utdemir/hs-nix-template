@@ -119,7 +119,7 @@ Lets say you wanted to make `extra` a dependency of your project:
 
 This will not only add `extra` to your project, but also build the documentation for you and add it to your local hoogle database. 
 
-### Override dependency to project
+### Override dependency in project
 
 If you want to override a dependency you add it like we did above with `extra`, but make sure the name is the same as what it is in the package set. A quick way to see what is in your modified Haskell package set is to export it and open it up with `nix repl`.
 
