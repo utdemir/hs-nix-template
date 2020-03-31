@@ -6,7 +6,7 @@ let
 
   gitignore = pkgs.nix-gitignore.gitignoreSourcePure [ ./.gitignore ];
 
-  haskellPackages = pkgs.haskell.packages.${compiler}.override {
+  myHaskellPackages = pkgs.haskell.packages.${compiler}.override {
     overrides = se: su: {
       "{{cookiecutter.project_name}}" =
         se.callCabal2nix
@@ -19,12 +19,12 @@ let
 in
 rec
 {
-  "{{cookiecutter.project_name}}" = haskellPackages."{{cookiecutter.project_name}}";
-  shell = haskellPackages.shellFor {
+  "{{cookiecutter.project_name}}" = myHaskellPackages."{{cookiecutter.project_name}}";
+  shell = myHaskellPackages.shellFor {
     packages = p: [
       p."{{cookiecutter.project_name}}"
     ];
-    buildInputs = with haskellPackages; [
+    buildInputs = with pkgs.haskellPackages; [
       cabal-install
       ghcid
       ormolu
