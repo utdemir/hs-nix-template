@@ -7,31 +7,38 @@ let
   gitignore = pkgs.nix-gitignore.gitignoreSourcePure [ ./.gitignore ];
 
   myHaskellPackages = pkgs.haskell.packages.${compiler}.override {
-    overrides = se: su: {
+    overrides = hself: hsuper: {
       "{{cookiecutter.project_name}}" =
-        se.callCabal2nix
+        hself.callCabal2nix
           "{{cookiecutter.project_name}}"
           (gitignore ./.)
           {};
     };
   };
 
-in
-rec
-{
-  "{{cookiecutter.project_name}}" = myHaskellPackages."{{cookiecutter.project_name}}";
   shell = myHaskellPackages.shellFor {
     packages = p: [
       p."{{cookiecutter.project_name}}"
     ];
     buildInputs = with pkgs.haskellPackages; [
-      cabal-install
+      myHaskellPackages.cabal-install
       ghcid
       ormolu
       hlint
-      pkgs.niv
+      (import sources.niv {}).niv
       pkgs.nixpkgs-fmt
     ];
     withHoogle = true;
   };
-}
+
+  exe = pkgs.haskell.lib.justStaticExecutables (myHaskellPackages."{{cookiecutter.project_name}}");
+
+  docker = pkgs.dockerTools.buildImage {
+    name = "{{cookiecutter.project_name}}";
+    config.Cmd = [ "${exe}/bin/{{cookiecutter.project_name}}" ];
+  };
+in
+  if pkgs.lib.inNixShell then shell else {
+    inherit exe;
+    inherit docker;
+  }
