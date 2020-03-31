@@ -18,8 +18,6 @@ No need to install anything, just run:
 nix-shell -p cookiecutter git --run 'cookiecutter gh:utdemir/hs-nix-template'
 ```
 
-[cookiecutter]: https://cookiecutter.readthedocs.io/en/latest/readme.html
-
 ## Cheat Sheet
 
 ### Run Hoogle locally
@@ -149,3 +147,5 @@ Then you can tab complete to see what is in `pkgs`
 ```
 nix-repl> pkgs.ex<tab>
 ```
+
+[cookiecutter]: https://cookiecutter.readthedocs.io/en/latest/README.html
