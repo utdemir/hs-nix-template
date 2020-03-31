@@ -32,6 +32,8 @@ Or you can directly build the executable for your project with:
 nix-build --attr exe
 ```
 
+Or [deploy to docker image](#deploy-to-docker-image)
+
 [cookiecutter]: https://cookiecutter.readthedocs.io/en/latest/readme.html
 
 ## Cheat Sheet
