@@ -24,7 +24,7 @@ Once that completes, `cd` into the directory and call:
 nix-shell
 ```
 
-To get a development shell with `cabal`, `hoogle`, `ghcid`, `ormolu`, `hlint`, `niv` and `nixpkgs-fmt`.
+(includes: `ghc865`, `cabal`, `hoogle`, `ghcid`, `ormolu`, `hlint`, `niv` and `nixpkgs-fmt`)
 
 Or you can directly build the executable for your project with:
 
@@ -32,7 +32,17 @@ Or you can directly build the executable for your project with:
 nix-build --attr exe
 ```
 
-Or [deploy to docker image](#deploy-to-docker-image)
+Or deploy to docker image:
+
+```
+nix-build --attr docker
+```
+
+And load the resulting image:
+
+```
+docker load -i result
+```
 
 [cookiecutter]: https://cookiecutter.readthedocs.io/en/latest/readme.html
 
@@ -194,17 +204,7 @@ Note: the reason we don't have this attribute added by default is you really onl
 
 ### Deploy to Docker Image
 
-The third project in [haskell-nix] goes into detail how this works, but we have already included docker under the `docker` attribute. To build your executable and put just the executable in a docker image run:
-
-```
-nix-build --attr docker
-```
-
-Then to load the image run:
-
-```
-docker load -i result
-```
+The third project in [haskell-nix] goes into detail how this works, but we have already included docker under the `docker` attribute. 
 
 Note: if your project name has a space in it, the executable path will be wrong.
 
