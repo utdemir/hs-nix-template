@@ -65,7 +65,7 @@ You need the `-n` to stop hoogle from trying to use https locally. You will need
 
 ### Add external tool to `default.nix`
 
-The sources you pull down with `niv` are accessible under `sources.<name>`. Its a derivation with the attributes you need to fetch the source, not the source itself. If you want to pull in a source you need to either give it to a function that knows how to fetch the contents like `callCabal2nix` or if the source has a `default.nix` you can import it directly, like so: `import sources.niv {}`.
+The sources you pull down with `niv` are accessible under `sources.<name>` (fyi: `<name>` is the key in `sources.json`). However, that is a derivation with the attributes you need to fetch the source, not the source itself. If you want to pull in a source you need to either give it to a function that knows how to fetch the contents like `callCabal2nix` or if the source has a `default.nix` you can import it directly, like so: `import sources.<name> {}`.
 
 ---
 
@@ -77,7 +77,7 @@ in
     inherit exe;
     inherit docker;
     ### Added here
-    src = import sources.niv {};
+    src = import sources.<name> {};
   }
 
 ```
@@ -93,7 +93,7 @@ On the other hand here is an example with `callCabal2nix` adding the specific ve
       cabal-install
       ### Added modified development tool here
       (pkgs.haskell.lib.justStaticExecutables
-          (callCabal2nix "ghcid" (sources.ghcid) {}))
+          (pkgs.haskellPackages.callCabal2nix "ghcid" (sources.ghcid) {}))
       ormolu
       hlint
       pkgs.niv
@@ -116,7 +116,7 @@ Then add it to the end of your `callCabal2nix` call:
 
 ```
       (pkgs.haskell.lib.justStaticExecutables
-          (callCabal2nix "ghcid" (sources.ghcid) {inherit extra;}))
+          (pkgs.haskellPackages.callCabal2nix "ghcid" (sources.ghcid) {inherit extra;}))
 ```
 
 Note: I am building `ghcid` with `haskellPackages` not `myHaskellPackages`. If the tool fails to build you might want to either use a different package set or modify one yourself so the tool has the right dependencies.
@@ -170,21 +170,9 @@ This will not only add `extra` to your project, but also build the documentation
 
 ### Override dependency in `default.nix`
 
-If you want to override a dependency you add it like we did above with `extra`, just make sure the name is identical to what is in the package set. As you would expect, the name in the package set is the same as the name on Hackage. There are a few packages with multiple versions, like `zip` and `zip_1_4_1`.
+If you want to override a dependency you add it like we did above with `extra`, just make sure the name is identical to what is in the package set. As you would expect, the name in the package set is the same as the name on Hackage. However, there are a few packages with multiple versions, like `zip` and `zip_1_4_1`.
 
-If you want to see exactly what is in your modified package set add this to your `default.nix` :
-
-```
-in
-  if pkgs.lib.inNixShell then shell else {
-  inherit exe;
-  inherit docker;
-  ### Added here
-  inherit myHaskellPackages;
-}
-```
-
-Then call `nix repl default.nix` and you will get this:
+If you want to see exactly what is in your modified package run `nix repl default.nix` and you will get this:
 
 ```
 
@@ -200,7 +188,12 @@ Then you can tab complete to see what is in `myHaskellPackages`
 nix-repl> myHaskellPackages.ex<tab>
 ```
 
-Note: the reason we don't have this attribute added by default is you really only need this for debugging and wouldn't want your continuous integration to build the package set as an output of your project.
+This is also the best way to find out what versions of libraries are in a package set. Instead of having to add them to your cabal file to find out the version you can just view the version attribute. Again in `nix repl`
+
+```
+nix-repl> myHaskellPackages.extra.version
+1.6.20
+```
 
 ### Deploy to Docker Image
 

@@ -38,7 +38,9 @@ let
     config.Cmd = [ "${exe}/bin/{{cookiecutter.project_name}}" ];
   };
 in
-  if pkgs.lib.inNixShell then shell else {
+  {
+    inherit shell;
     inherit exe;
     inherit docker;
+    inherit myHaskellPackages;
   }
