@@ -43,4 +43,5 @@ in
     inherit exe;
     inherit docker;
     inherit myHaskellPackages;
+    "{{cookiecutter.project_name}}" = myHaskellPackages."{{cookiecutter.project_name}}";
   }

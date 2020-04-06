@@ -157,9 +157,11 @@ Lets say you wanted to add `extra` as dependency of your project and its not in 
           "extra"
           (sources.extra)
           {};
-      "your project name" =
+      ### Local package without a default.nix and don't run tests
+      hedgehog = self.haskell.lib.dontCheck (hself.callCabal2nix "hedgehog" /absolute/path/to/project/haskell-hedgehog/hedgehog {});
+      "your-project-name" =
         hself.callCabal2nix
-          "your project name"
+          "your-project-name"
           (gitignore ./.)
           {};
     };
@@ -193,6 +195,30 @@ This is also the best way to find out what versions of libraries are in a packag
 ```
 nix-repl> myHaskellPackages.extra.version
 1.6.20
+```
+
+### Importing your library in another project
+
+One of the attributes `default.nix` exports is `"your-project-name"`. This is so you can easily import your project's library into your other Haskell projects.
+
+If you want to import your project locally you can just directly reference the `default.nix` file.
+
+```
+  myHaskellPackages = pkgs.haskell.packages.${compiler}.override {
+    overrides = hself: hsuper: {
+      ### local import
+      "your-project-name" = 
+        (import /absolute/path/to/your-project-name/default.nix {}).your-project-name;
+```
+
+The downside to this approach is that your continuous integration or others won't be able to build your project from scratch. You need to host the code somewhere online and fetch it in the derivation. You can use `niv` to fetch your code from github or the like and then import it like so:
+
+```
+  myHaskellPackages = pkgs.haskell.packages.${compiler}.override {
+    overrides = hself: hsuper: {
+      ### local import
+      "your-project-name" = 
+        (import source.your-project-name {}).your-project-name;
 ```
 
 ### Deploy to Docker Image
