@@ -1,0 +1,5 @@
+steps:
+  - label: Build & upload to cachix
+    command: |
+      nix-build ./ci.nix --keep-going |
+        cachix push utdemir
