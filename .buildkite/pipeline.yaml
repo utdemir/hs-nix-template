@@ -3,4 +3,4 @@ steps:
     command: |
       set -o pipefail
       nix-build ./ci.nix --keep-going |
-        cachix push utdemir
+        cachix push hs-nix-template
