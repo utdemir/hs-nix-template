@@ -6,6 +6,7 @@ rec {
 
   generated = pkgs.runCommand "hs-nix-template" {
     buildInputs = [ pkgs.cookiecutter ];
+    preferLocalBuild = true;
   } ''
     HOME="$(mktemp -d)"
     mkdir "$out"
