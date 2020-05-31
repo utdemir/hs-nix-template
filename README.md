@@ -1,6 +1,6 @@
 # hs-nix-template
 
-[![Build status](https://badge.buildkite.com/372d48eaf0a1aa159ec90a5f59fd751612babe12af3d98b86e.svg)](https://buildkite.com/utdemir/hs-nix-template)
+[![Build status](https://badge.buildkite.com/372d48eaf0a1aa159ec90a5f59fd751612babe12af3d98b86e.svg?branch=master)](https://buildkite.com/utdemir/hs-nix-template)
 
 A [cookiecutter] template which creates a Haskell project that
 
@@ -62,7 +62,7 @@ You need the `-n` to stop hoogle from trying to use https locally. You will need
 - From GitHub with specific revision
   - `niv add ndmitchell/ghcid -a rev=e3a65cd986805948687d9450717efe00ff01e3b5`
 
-[niv]: https://github.com/nmattia/niv 
+[niv]: https://github.com/nmattia/niv
 
 ### Add external tool to `default.nix`
 
@@ -208,7 +208,7 @@ If you want to import your project locally you can just directly reference the `
   myHaskellPackages = pkgs.haskell.packages.${compiler}.override {
     overrides = hself: hsuper: {
       ### local import
-      "your-project-name" = 
+      "your-project-name" =
         (import /absolute/path/to/your-project-name/default.nix {}).your-project-name;
 ```
 
@@ -218,13 +218,13 @@ The downside to this approach is that your continuous integration or others won'
   myHaskellPackages = pkgs.haskell.packages.${compiler}.override {
     overrides = hself: hsuper: {
       ### local import
-      "your-project-name" = 
+      "your-project-name" =
         (import source.your-project-name {}).your-project-name;
 ```
 
 ### Deploy to Docker Image
 
-The third project in [haskell-nix] goes into detail how this works, but we have already included docker under the `docker` attribute. 
+The third project in [haskell-nix] goes into detail how this works, but we have already included docker under the `docker` attribute.
 
 Note: if your project name has a space in it, the executable path will be wrong.
 
