@@ -45,7 +45,7 @@ And load the resulting image:
 docker load -i result
 ```
 
-[cookiecutter]: https://cookiecutter.readthedocs.io/en/latest/readme.html
+[cookiecutter]: https://cookiecutter.readthedocs.io/
 
 ## Cheat Sheet
 
