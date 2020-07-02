@@ -11,5 +11,5 @@ jobs:
     - uses: cachix/cachix-action@v5
       with:
         name: hs-nix-template
-        file: nix/ci.nix
+        file: ci.nix
         signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
