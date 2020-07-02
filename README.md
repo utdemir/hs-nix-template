@@ -1,6 +1,6 @@
 # hs-nix-template
 
-[![Build status](https://badge.buildkite.com/372d48eaf0a1aa159ec90a5f59fd751612babe12af3d98b86e.svg?branch=master)](https://buildkite.com/utdemir/hs-nix-template)
+[![CI Status](https://github.com/utdemir/hs-nix-template/workflows/nix-build/badge.svg)](https://github.com/utdemir/hs-nix-template/actions)
 
 A [cookiecutter] template which creates a Haskell project that
 

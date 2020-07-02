@@ -1,6 +1,0 @@
-steps:
-  - label: Build & upload to cachix
-    command: |
-      set -o pipefail
-      nix-build ./ci.nix --keep-going |
-        cachix push hs-nix-template
