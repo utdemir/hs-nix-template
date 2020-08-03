@@ -25,7 +25,7 @@ let
       ghcid
       ormolu
       hlint
-      (import sources.niv {}).niv
+      pkgs.niv
       pkgs.nixpkgs-fmt
     ];
     withHoogle = true;
