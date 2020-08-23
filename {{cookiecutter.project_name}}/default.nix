@@ -1,4 +1,4 @@
-{ compiler ? "ghc8101" }:
+{ compiler ? "ghc8102" }:
 
 let
   sources = import ./nix/sources.nix;
@@ -20,11 +20,11 @@ let
     packages = p: [
       p."{{cookiecutter.project_name}}"
     ];
-    buildInputs = with pkgs.haskellPackages; [
-      myHaskellPackages.cabal-install
-      ghcid
-      ormolu
-      hlint
+    buildInputs = [
+      pkgs.haskellPackages.cabal-install
+      pkgs.haskellPackages.ghcid
+      pkgs.haskellPackages.ormolu
+      pkgs.haskellPackages.hlint
       pkgs.niv
       pkgs.nixpkgs-fmt
     ];
