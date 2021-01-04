@@ -11,6 +11,8 @@ A [cookiecutter] template which creates a Haskell project that
 * Can be built into a Docker container,
 * Uses a pinned `nixpkgs` managed by `niv`.
 
+[cookiecutter]: https://cookiecutter.readthedocs.io/
+
 ## Usage
 
 No need to install anything, just run:
@@ -25,7 +27,7 @@ Once that completes, `cd` into the directory and call:
 nix-shell
 ```
 
-(includes: `ghc865`, `cabal`, `hoogle`, `ghcid`, `ormolu`, `hlint`, `niv` and `nixpkgs-fmt`)
+(includesa a recent GHC, `cabal`, `hoogle`, `ghcid`, `ormolu`, `hlint`, `niv` and `nixpkgs-fmt`)
 
 Or you can directly build the executable for your project with:
 
@@ -44,8 +46,6 @@ And load the resulting image:
 ```
 docker load -i result
 ```
-
-[cookiecutter]: https://cookiecutter.readthedocs.io/
 
 ## Cheat Sheet
 
