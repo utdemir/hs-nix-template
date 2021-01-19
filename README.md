@@ -6,7 +6,7 @@ A [cookiecutter] template which creates a Haskell project that
 
 * Can be built with Nix and cabal-install,
 * Has a library, an executable and a test suite,
-* Comes with a `shell.nix` which provides an environment with `ghcid` and `ormolu`,
+* Comes with a `shell.nix` which provides an environment with `haskell-language-server`, `ghcid`, `ormolu` and more,
 * `ghci` integrates with Haddock and Hoogle for all dependencies (`:doc`, `:hoogle`),
 * Can be built into a Docker container,
 * Uses a pinned `nixpkgs` managed by `niv`.
@@ -27,7 +27,7 @@ Once that completes, `cd` into the directory and call:
 nix-shell
 ```
 
-(includesa a recent GHC, `cabal`, `hoogle`, `ghcid`, `ormolu`, `hlint`, `niv` and `nixpkgs-fmt`)
+(includes a recent GHC, `cabal`, a populated `hoogle` database, `haskell-language-server`, `ghcid` and more)
 
 Or you can directly build the executable for your project with:
 

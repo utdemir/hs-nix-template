@@ -23,6 +23,7 @@ let
     buildInputs = [
       pkgs.haskellPackages.cabal-install
       pkgs.haskellPackages.ghcid
+      pkgs.haskellPackages.haskell-language-server
       pkgs.haskellPackages.ormolu
       pkgs.haskellPackages.hlint
       pkgs.niv
