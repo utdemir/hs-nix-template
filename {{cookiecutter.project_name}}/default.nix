@@ -21,9 +21,9 @@ let
       p."{{cookiecutter.project_name}}"
     ];
     buildInputs = [
+      myHaskellPackages.haskell-language-server
       pkgs.haskellPackages.cabal-install
       pkgs.haskellPackages.ghcid
-      pkgs.haskellPackages.haskell-language-server
       pkgs.haskellPackages.ormolu
       pkgs.haskellPackages.hlint
       pkgs.niv
