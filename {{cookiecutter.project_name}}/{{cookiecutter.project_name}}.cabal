@@ -2,7 +2,7 @@ name:                {{cookiecutter.project_name}}
 synopsis:            {{cookiecutter.project_synopsis}}
 version:             0.0.1.0
 homepage:            https://github.com/{{cookiecutter.gh_user}}/{{cookiecutter.project_name}}
-license:             BSD3
+license:             BSD-3-Clause
 author:              {{cookiecutter.author_name}}
 maintainer:          {{cookiecutter.author_name}}
 copyright:           {{cookiecutter.author_name}}
