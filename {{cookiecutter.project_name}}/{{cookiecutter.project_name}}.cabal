@@ -1,3 +1,5 @@
+cabal-version:       3.0
+
 name:                {{cookiecutter.project_name}}
 synopsis:            {{cookiecutter.project_synopsis}}
 version:             0.0.1.0
@@ -8,7 +10,6 @@ maintainer:          {{cookiecutter.author_name}}
 copyright:           {{cookiecutter.author_name}}
 category:            {{cookiecutter.category}}
 build-type:          Simple
-cabal-version:       >=1.10
 
 library
   hs-source-dirs:      src
