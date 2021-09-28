@@ -4,5 +4,6 @@
   "category": "Package.Category",
   "module": "{{cookiecutter.project_name|title|replace('-', '')}}",
   "author_name": "Your Name",
-  "gh_user": "your_github_username"
+  "gh_user": "your_github_username",
+  "use_hpack": "n"
 }

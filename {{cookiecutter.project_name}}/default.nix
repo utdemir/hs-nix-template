@@ -26,6 +26,7 @@ let
       pkgs.haskellPackages.ghcid
       pkgs.haskellPackages.ormolu
       pkgs.haskellPackages.hlint
+      {% if cookiecutter.use_hpack == "y" %}pkgs.haskellPackages.hpack{% endif %}
       pkgs.niv
       pkgs.nixpkgs-fmt
     ];
