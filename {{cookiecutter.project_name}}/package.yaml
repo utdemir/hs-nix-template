@@ -1,0 +1,32 @@
+name: {{cookiecutter.project_name}}
+version: 0.0.1.0
+synopsis: {{cookiecutter.project_synopsis}}
+description: See README at <https://github.com/{{cookiecutter.gh_user}}/{{cookiecutter.project_name}}
+author: {{cookiecutter.author_name}}
+github: {{cookiecutter.gh_user}}/{{cookiecutter.project_name}}
+category: {{cookiecutter.category}}
+license: BSD-3-Clause
+
+dependencies:
+  - base >=4.11 && < 5
+
+library:
+  source-dirs: src
+
+executables:
+  {{cookiecutter.project_name}}-exe:
+    source-dirs: app
+    main: Main.hs
+    dependencies:
+      - {{cookiecutter.project_name}}
+
+tests:
+  {{cookiecutter.project_name}}-test:
+    source-dirs: test
+    main: Main.hs
+    ghc-options:
+      - -Wall
+      - -threaded
+    dependencies:
+      - {{cookiecutter.project_name}}
+      - hedgehog

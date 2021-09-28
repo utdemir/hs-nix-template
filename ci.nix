@@ -15,4 +15,16 @@ rec {
 
   build = pkgs.recurseIntoAttrs
     (import "${generated}/your-project-name" {});
+
+  generatedWithHpack = pkgs.runCommand "hs-nix-template" {
+    buildInputs = [ pkgs.cookiecutter ];
+    preferLocalBuild = true;
+  } ''
+    HOME="$(mktemp -d)"
+    mkdir "$out"
+    cookiecutter --no-input --output-dir "$out" ${./.} use_hpack=y
+  '';
+
+  buildWithHpack = pkgs.recurseIntoAttrs
+    (import "${generatedWithHpack}/your-project-name" {});
 }
