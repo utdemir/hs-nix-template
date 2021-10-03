@@ -26,7 +26,9 @@ let
       pkgs.haskellPackages.ghcid
       pkgs.haskellPackages.ormolu
       pkgs.haskellPackages.hlint
-      {% if cookiecutter.use_hpack == "y" %}pkgs.haskellPackages.hpack{% endif %}
+      {% if cookiecutter.project_configuration_tool.startswith("package.yaml") %}
+      pkgs.haskellPackages.hpack
+      {% endif -%}
       pkgs.niv
       pkgs.nixpkgs-fmt
     ];
