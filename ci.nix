@@ -22,7 +22,7 @@ rec {
   } ''
     HOME="$(mktemp -d)"
     mkdir "$out"
-    cookiecutter --no-input --output-dir "$out" ${./.} use_hpack=y
+    cookiecutter --no-input --output-dir "$out" ${./.} project_configuration_tool="package.yaml (hpack)"
   '';
 
   buildWithHpack = pkgs.recurseIntoAttrs
