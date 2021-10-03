@@ -61,10 +61,8 @@ cabal build
 ```
 
 The nix shell will contain `hpack` for local development and the nix build will
-automatically handle changes to package.yaml. See [hpack-docs](the hpack
-documentation) for more information.
-
-[hpack-docs]: https://github.com/sol/hpack#hpack-a-modern-format-for-haskell-packages
+automatically handle changes to package.yaml. See [the hpack
+documentation](https://github.com/sol/hpack#hpack-a-modern-format-for-haskell-packages) for more information.
 
 ### Run Hoogle locally
 
