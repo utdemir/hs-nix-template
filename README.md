@@ -49,6 +49,23 @@ docker load -i result
 
 ## Cheat Sheet
 
+### Use the hpack configuration tool
+
+When running cookiecutter, you'll be presented with the option of using cabal's
+default configuration format or hpack. When using hpack, you will need to run
+hpack to generate a cabal file before building, i.e.
+
+```sh
+hpack .
+cabal build
+```
+
+The nix shell will contain `hpack` for local development and the nix build will
+automatically handle changes to package.yaml. See [hpack-docs](the hpack
+documentation) for more information.
+
+[hpack-docs]: https://github.com/sol/hpack#hpack-a-modern-format-for-haskell-packages
+
 ### Run Hoogle locally
 
 - `hoogle server --local -p 3000 -n`
