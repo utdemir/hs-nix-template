@@ -33,6 +33,7 @@ let
     ];
     withHoogle = true;
   };
+  {% if cookiecutter.project_type == "Executable" %}
 
   exe = pkgs.haskell.lib.justStaticExecutables (myHaskellPackages."{{cookiecutter.project_name}}");
 
@@ -40,11 +41,13 @@ let
     name = "{{cookiecutter.project_name}}";
     config.Cmd = [ "${exe}/bin/{{cookiecutter.project_name}}" ];
   };
+  {% endif -%}
 in
 {
   inherit shell;
-  inherit exe;
+  {% if cookiecutter.project_type == "Executable" %}inherit exe;
   inherit docker;
+  {% endif -%}
   inherit myHaskellPackages;
   "{{cookiecutter.project_name}}" = myHaskellPackages."{{cookiecutter.project_name}}";
 }

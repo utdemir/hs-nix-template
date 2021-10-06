@@ -4,6 +4,8 @@ import sys
 REMOVE_PATHS = [
     '{% if cookiecutter.project_configuration_tool.startswith("package.yaml") %} {{ cookiecutter.project_name }}.cabal {% endif %}',
     '{% if not cookiecutter.project_configuration_tool.startswith("package.yaml") %} package.yaml {% endif %}',
+    '{% if cookiecutter.project_type == "Library" %} app/Main.hs {% endif %}',
+    '{% if cookiecutter.project_type == "Library" %} app {% endif %}',
 ]
 
 for path in REMOVE_PATHS:
