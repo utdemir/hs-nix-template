@@ -33,15 +33,14 @@ let
     ];
     withHoogle = true;
   };
-  {% if cookiecutter.project_type == "Executable" %}
-
+{% if cookiecutter.project_type == "Executable" %}
   exe = pkgs.haskell.lib.justStaticExecutables (myHaskellPackages."{{cookiecutter.project_name}}");
 
   docker = pkgs.dockerTools.buildImage {
     name = "{{cookiecutter.project_name}}";
     config.Cmd = [ "${exe}/bin/{{cookiecutter.project_name}}" ];
   };
-  {% endif -%}
+{% endif -%}
 in
 {
   inherit shell;
