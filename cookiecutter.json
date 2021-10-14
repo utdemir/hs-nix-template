@@ -1,10 +1,10 @@
 {
   "project_name": "your-project-name",
   "project_synopsis": "Project synopsis",
-  "project_type": ["Library", "Executable"],
   "category": "Package.Category",
   "module": "{{cookiecutter.project_name|title|replace('-', '')}}",
   "author_name": "Your Name",
   "gh_user": "your_github_username",
-  "project_configuration_tool": ["{{cookiecutter.project_name|replace('-', '')}}.cabal (cabal's default)", "package.yaml (hpack)"]
+  "project_configuration_tool": ["{{cookiecutter.project_name|replace('-', '')}}.cabal (cabal's default)", "package.yaml (hpack)"],
+  "add_executable_section": ["no", "yes"]
 }

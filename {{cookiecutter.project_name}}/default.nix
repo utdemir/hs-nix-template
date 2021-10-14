@@ -33,7 +33,7 @@ let
     ];
     withHoogle = true;
   };
-{% if cookiecutter.project_type == "Executable" %}
+{% if cookiecutter.add_executable_section == "yes" %}
   exe = pkgs.haskell.lib.justStaticExecutables (myHaskellPackages."{{cookiecutter.project_name}}");
 
   docker = pkgs.dockerTools.buildImage {
@@ -44,7 +44,7 @@ let
 in
 {
   inherit shell;
-  {% if cookiecutter.project_type == "Executable" %}inherit exe;
+  {% if cookiecutter.add_executable_section == "yes" %}inherit exe;
   inherit docker;
   {% endif -%}
   inherit myHaskellPackages;
