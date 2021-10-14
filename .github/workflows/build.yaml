@@ -16,4 +16,4 @@ jobs:
       with:
         name: hs-nix-template
         signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
-    - run: nix-build ci.nix --attr project_configuration_tool ${{ matrix.project_configuration_tool }} --attr add_executable_section ${{ matrix.add_executable_section }}
+    - run: nix-build ci.nix --argstr project_configuration_tool '${{ matrix.project_configuration_tool }}' --argstr add_executable_section '${{ matrix.add_executable_section }}'
