@@ -14,7 +14,10 @@ rec {
   } ''
     HOME="$(mktemp -d)"
     mkdir "$out"
-    cookiecutter --no-input --output-dir "$out" ${./.} project_configuration_tool="${project_configuration_tool}" add_executable_section="${add_executable_section}"
+    cookiecutter \
+      --no-input --output-dir "$out" ${./.} \
+      project_configuration_tool="${project_configuration_tool}" \
+      add_executable_section="${add_executable_section}"
   '';
 
   build = pkgs.recurseIntoAttrs
