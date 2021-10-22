@@ -1,5 +1,5 @@
 {
-  project_configuration_tool ? "your-project-name.cabal (cabal's default)",
+  use_hpack ? "no",
   add_executable_section ? "no"
 }:
 
@@ -16,7 +16,7 @@ rec {
     mkdir "$out"
     cookiecutter \
       --no-input --output-dir "$out" ${./.} \
-      project_configuration_tool="${project_configuration_tool}" \
+      use_hpack="${use_hpack}" \
       add_executable_section="${add_executable_section}"
   '';
 

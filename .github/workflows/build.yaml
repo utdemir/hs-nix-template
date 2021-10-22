@@ -6,7 +6,7 @@ jobs:
   build:
     strategy:
       matrix:
-        project_configuration_tool: ["your-project-name.cabal (cabal's default)", "package.yaml (hpack)"]
+        use_hpack: ["no", "yes"]
         add_executable_section: ["no", "yes"]
     runs-on: ubuntu-latest
     steps:
@@ -16,7 +16,4 @@ jobs:
       with:
         name: hs-nix-template
         signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
-    - run: >
-        nix-build ci.nix
-          --argstr project_configuration_tool "${{ matrix.project_configuration_tool }}"
-          --argstr add_executable_section "${{ matrix.add_executable_section }}"
+    - run: nix-build ci.nix --argstr use_hpack "${{ matrix.use_hpack }}" --argstr add_executable_section "${{ matrix.add_executable_section }}"
