@@ -26,25 +26,27 @@ let
       pkgs.haskellPackages.ghcid
       pkgs.haskellPackages.ormolu
       pkgs.haskellPackages.hlint
-      {% if cookiecutter.project_configuration_tool.startswith("package.yaml") %}pkgs.haskellPackages.hpack
+      {% if cookiecutter.use_hpack == "yes" %}pkgs.haskellPackages.hpack
       {% endif -%}
       pkgs.niv
       pkgs.nixpkgs-fmt
     ];
     withHoogle = true;
   };
-
+{% if cookiecutter.add_executable_section == "yes" %}
   exe = pkgs.haskell.lib.justStaticExecutables (myHaskellPackages."{{cookiecutter.project_name}}");
 
   docker = pkgs.dockerTools.buildImage {
     name = "{{cookiecutter.project_name}}";
     config.Cmd = [ "${exe}/bin/{{cookiecutter.project_name}}" ];
   };
+{% endif -%}
 in
 {
   inherit shell;
-  inherit exe;
+  {% if cookiecutter.add_executable_section == "yes" %}inherit exe;
   inherit docker;
+  {% endif -%}
   inherit myHaskellPackages;
   "{{cookiecutter.project_name}}" = myHaskellPackages."{{cookiecutter.project_name}}";
 }

@@ -13,13 +13,14 @@ dependencies:
 library:
   source-dirs: src
 
-executables:
+{% if cookiecutter.add_executable_section == "yes" %}executables:
   {{cookiecutter.project_name}}-exe:
     source-dirs: app
     main: Main.hs
     dependencies:
       - {{cookiecutter.project_name}}
 
+{% endif -%}
 tests:
   {{cookiecutter.project_name}}-test:
     source-dirs: test

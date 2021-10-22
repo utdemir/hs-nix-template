@@ -4,6 +4,10 @@ on:
   push:
 jobs:
   build:
+    strategy:
+      matrix:
+        use_hpack: ["no", "yes"]
+        add_executable_section: ["no", "yes"]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -12,4 +16,4 @@ jobs:
       with:
         name: hs-nix-template
         signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
-    - run: nix-build ci.nix
+    - run: nix-build ci.nix --argstr use_hpack "${{ matrix.use_hpack }}" --argstr add_executable_section "${{ matrix.add_executable_section }}"
