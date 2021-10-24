@@ -16,4 +16,8 @@ jobs:
       with:
         name: hs-nix-template
         signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
-    - run: nix-build ci.nix --argstr use_hpack "${{ matrix.use_hpack }}" --argstr add_executable_section "${{ matrix.add_executable_section }}"
+    - name: hs-nix-template
+      run: |
+        nix-build ci.nix \
+        --argstr use_hpack "${{ matrix.use_hpack }}" \
+        --argstr add_executable_section "${{ matrix.add_executable_section }}"
