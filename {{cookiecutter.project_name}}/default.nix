@@ -26,6 +26,7 @@ let
       pkgs.haskellPackages.ghcid
       pkgs.haskellPackages.ormolu
       pkgs.haskellPackages.hlint
+      pkgs.zlib
       {% if cookiecutter.use_hpack == "yes" %}pkgs.haskellPackages.hpack
       {% endif -%}
       pkgs.niv
